@@ -1,0 +1,9 @@
+.techiepress-menu {
+  background-color: brown;
+  color: aliceblue;
+}
+
+.techiepress-menu li {
+  display: inline-block;
+  margin: 0 20px;
+}
