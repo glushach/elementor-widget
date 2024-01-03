@@ -66,4 +66,20 @@ final class TechiepressElementorWidget {
 
 }
 
-TechiepressElementorWidget::get_instance();
+// TechiepressElementorWidget::get_instance();
+
+add_action('techiepress_do_action', 'echo_header_2');
+
+function echo_header_2()
+{
+  echo '<h2>' . apply_filters('techipress_title', 'This is our header two') . '</h2>';
+}
+
+add_filter('techipress_title', 'techipress_modify_title');
+
+function techipress_modify_title($title)
+{
+  $title = 'Hello title -' . $title;
+
+  return $title;
+}
