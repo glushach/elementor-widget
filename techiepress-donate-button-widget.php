@@ -32,6 +32,7 @@ final class TechiepressElementorWidgets {
   {
     add_action('init', array($this, 'i18n'));
     add_action('plugins_loaded', array($this, 'init_plugin'));
+    add_action('elementor/elements/categories_registered', array($this, 'create_new_category'));
     add_action('elementor/widgets/widgets_registered', array($this, 'init_widgets'));
   }
 
@@ -71,7 +72,16 @@ final class TechiepressElementorWidgets {
     return self::$_instance;
   }
 
-
+  public function create_new_category( $elements_manager )
+  {
+    $elements_manager->add_category(
+      'techiepress',
+      [
+        'title' => __('Techiepress', 'techiepress-elementor-widgets'),
+        'icon' => 'fa fa-plug'
+      ]
+    );
+  }
 }
 
 TechiepressElementorWidgets::get_instance();

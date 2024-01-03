@@ -28,7 +28,7 @@ class Nav_Menu extends Widget_Base {
   public function get_categories()
   {
     // TODO: add out own category in Elementor
-    return ['wordpress'];
+    return ['techiepress'];
 
     // pro-elements
     // woocommerce-elements
