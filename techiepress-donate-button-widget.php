@@ -12,12 +12,15 @@
  * Licence URL: http://www.gnu.org/licenses/gpl-2.0.txt
  * text-domain: techiepress-elementor-widgets
  */
+namespace TechiePress\ElementorWidgets;
+
+use TechiePress\ElementorWidgets\Widgets\Nav_Menu;
 
 if (! defined('ABSPATH')) {
   exit;
 }
 
-final class TechiepressElementorWidget {
+final class TechiepressElementorWidgets {
 
   const VERSION = '0.1.0';
   const ELEMENTOR_MINIMUM_VERSION = '3.0.0';
@@ -29,6 +32,7 @@ final class TechiepressElementorWidget {
   {
     add_action('init', array($this, 'i18n'));
     add_action('plugins_loaded', array($this, 'init_plugin'));
+    add_action('elementor/widgets/widgets_registered', array($this, 'init_widgets'));
   }
 
   public function i18n()
@@ -51,7 +55,11 @@ final class TechiepressElementorWidget {
 
   public function init_widgets()
   {
+    // Require the widget class
+    require __DIR__ . '/widgets/nav-menu.php';
 
+    // Register widget with Elementor
+    \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new Nav_Menu() );
   }
 
   public static function get_instance()
@@ -66,20 +74,4 @@ final class TechiepressElementorWidget {
 
 }
 
-// TechiepressElementorWidget::get_instance();
-
-add_action('techiepress_do_action', 'echo_header_2');
-
-function echo_header_2()
-{
-  echo '<h2>' . apply_filters('techipress_title', 'This is our header two') . '</h2>';
-}
-
-add_filter('techipress_title', 'techipress_modify_title');
-
-function techipress_modify_title($title)
-{
-  $title = 'Hello title -' . $title;
-
-  return $title;
-}
+TechiepressElementorWidgets::get_instance();

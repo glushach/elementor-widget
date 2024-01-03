@@ -1,0 +1,57 @@
+<?php
+
+namespace TechiePress\ElementorWidgets\Widgets;
+
+use Elementor\Widget_Base;
+
+/**
+ * Have the widget code for the Elementor Nav Menu
+ */
+
+class Nav_Menu extends Widget_Base {
+  public function get_name()
+  {
+    return 'techiePress-menu';
+  }
+
+  public function get_title()
+  {
+    return __('TechiePress Menu', 'techiepress-elementor-widgets');
+  }
+
+  public function get_icon()
+  {
+    // return 'fa fa-menu';
+    return 'eicon-nav-menu';
+  }
+
+  public function get_categories()
+  {
+    // TODO: add out own category in Elementor
+    return ['wordpress'];
+
+    // pro-elements
+    // woocommerce-elements
+    // general
+    // basic
+  }
+
+  public function _register_control()
+  {
+
+  }
+
+  protected function render()
+  {
+    ?>
+      <div>Hello widget render</div>
+    <?php
+  }
+
+  protected function _content_template()
+  {
+    ?>
+      <div>Hello widget content_template</div>
+    <?php
+  }
+}
