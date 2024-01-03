@@ -3,6 +3,7 @@
 namespace TechiePress\ElementorWidgets\Widgets;
 
 use Elementor\Widget_Base;
+use Elementor\Controls_Stack;
 
 /**
  * Have the widget code for the Elementor Nav Menu
@@ -71,7 +72,7 @@ class Nav_Menu extends Widget_Base {
   }
 
   // Back end.
-  protected function _content_template()
+  protected function content_template()
   {
     echo wp_nav_menu(
       [
